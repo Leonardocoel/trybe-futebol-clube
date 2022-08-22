@@ -6,7 +6,13 @@ import chaiHttp = require("chai-http");
 import { app } from "../app";
 import UserModel from "../database/models/user.model";
 import jwtService from "../services/jwt.service";
-import { invalidLogin, token, validLogin, validUser } from "./mocks/mocks";
+import {
+  invalidLogin,
+  token,
+  validLogin,
+  validUser,
+  validUserDTO,
+} from "./mocks/mocks";
 
 import { Response } from "superagent";
 
@@ -18,7 +24,7 @@ describe("Login", () => {
   let response: Response;
 
   describe("Correct credentials", () => {
-    afterEach(() => (UserModel.findOne as Sinon.SinonStub).restore());
+    afterEach(() => Sinon.restore());
 
     it("When the credentials are correct, it should return status 200 and the token.", async () => {
       Sinon.stub(UserModel, "findOne").resolves(validUser as UserModel);
@@ -66,6 +72,18 @@ describe("Login", () => {
 
       expect(response.status).to.be.equal(401);
       expect(response.body.message).to.be.equal("Incorrect email or password");
+    });
+  });
+  describe("User role", () => {
+    it("after validating the token returns the user role ", async () => {
+      Sinon.stub(jwtService, "verify").returns(validUserDTO);
+
+      const response = await chai.request(app).get("/login/validate").set("Authorization", token);
+
+      expect(response.status).to.be.equal(200);
+      expect(response.body.role).to.be.equal("user");
+
+      Sinon.restore();
     });
   });
 });
