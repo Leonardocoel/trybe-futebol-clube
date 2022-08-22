@@ -20,7 +20,9 @@ export default class LoginService implements ILoginService {
     const user = await User.findOne({ where: { email }, raw: true });
 
     if (!user) {
-      throw new Error('Method not implemented.');
+      const error = new Error('Incorrect email or password');
+      error.name = 'UNAUTHORIZED';
+      throw error;
     }
 
     this._passwordService.check(password, user.password);
