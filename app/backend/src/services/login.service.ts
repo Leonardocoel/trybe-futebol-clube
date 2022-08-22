@@ -1,3 +1,4 @@
+import validateCredentials from '../helpers/validateCredentials';
 import { IPasswordService } from '../interfaces/IPasswordService';
 import { ILogin } from '../interfaces/ILogin';
 import User from '../database/models/user.model';
@@ -14,6 +15,8 @@ export default class LoginService implements ILoginService {
   }
 
   async validateUser({ email, password }: ILogin): Promise<string> {
+    validateCredentials(email, password);
+
     const user = await User.findOne({ where: { email }, raw: true });
 
     if (!user) {
