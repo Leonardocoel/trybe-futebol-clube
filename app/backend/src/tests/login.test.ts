@@ -31,6 +31,17 @@ describe("Login", () => {
     });
   });
   describe("Wrong credentials", () => {
-    it("");
+    it("When the email is missing, it should return status 400 and the correct message.", async () => {
+      const response = await chai.request(app).post("/login").send({ password: validLogin.password });
+
+      expect(response.status).to.be.equal(400);
+      expect(response.body.message).to.be.equal("All fields must be filled");
+    });
+    it("When the password is missing, it should return status 400 and the correct message.", async () => {
+      const response = await chai.request(app).post("/login").send({ email: validLogin.email });
+
+      expect(response.status).to.be.equal(400);
+      expect(response.body.message).to.be.equal("All fields must be filled");
+    });
   });
 });
