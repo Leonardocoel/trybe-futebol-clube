@@ -34,9 +34,15 @@ export default class LoginService implements ILoginService {
     return token;
   }
 
-  validateToken(token: string): void {
-    const { username } = this._tokenService.verify(token);
+  validateToken(token: string): string {
+    if (!token) {
+      const error = new Error('Token not found');
+      error.name = 'UNAUTHORIZED';
+      throw error;
+    }
 
-    throw new Error(username);
+    const { role } = this._tokenService.verify(token);
+
+    return role;
   }
 }
