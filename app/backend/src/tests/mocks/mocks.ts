@@ -14,4 +14,9 @@ export const validLogin: ILogin = {
   password: "secret_user"
 }
 
+export const invalidLogin: ILogin = {
+  email: "user@admin.com" ,
+  password: "admin"
+}
+
 export const token = 'any-token'
