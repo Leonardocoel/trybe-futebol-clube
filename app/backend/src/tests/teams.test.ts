@@ -29,13 +29,13 @@ describe("Teams", () => {
 
     });
 
-    it('team by id', async () => {
+    it('Team by id', async () => {
       Sinon.stub(TeamsModel, "findOne").resolves(allTeams[1] as TeamsModel)
 
       const response = await chai.request(app).get('/teams/:id').send({id: 2});
 
       expect(response.status).to.be.equal(200);
-      expect(response.body).to.be.equal(team)
+      expect(response.body).to.be.eql(team)
     })
  })
 
