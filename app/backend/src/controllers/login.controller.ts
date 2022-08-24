@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { ILogin } from '../interfaces/ILogin';
-import { ILoginService } from '../interfaces/ILoginService';
+import { ILogin } from '../interfaces/Login/ILogin';
+import { ILoginService } from '../interfaces/Login/ILoginService';
 
 export default class LoginController {
   constructor(

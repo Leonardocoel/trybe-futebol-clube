@@ -1,9 +1,9 @@
 import validateCredentials from '../helpers/validateCredentials';
-import { IPasswordService } from '../interfaces/IPasswordService';
-import { ILogin } from '../interfaces/ILogin';
+import { IPasswordService } from '../interfaces/Login/IPasswordService';
+import { ILogin } from '../interfaces/Login/ILogin';
 import User from '../database/models/user.model';
-import { ITokenService } from '../interfaces/ITokenService';
-import { ILoginService } from '../interfaces/ILoginService';
+import { ITokenService } from '../interfaces/Login/ITokenService';
+import { ILoginService } from '../interfaces/Login/ILoginService';
 
 export default class LoginService implements ILoginService {
   private _passwordService: IPasswordService;

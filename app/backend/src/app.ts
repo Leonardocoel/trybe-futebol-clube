@@ -2,7 +2,8 @@ import * as express from 'express';
 import 'express-async-errors';
 import * as cors from 'cors';
 
-import loginRouter from './routers/login.router';
+import { loginRouter, teamsRouter } from './routers';
+
 import errorMidleware from './middlewares/error.middleware';
 
 class App {
@@ -17,6 +18,8 @@ class App {
     this.app.get('/', (req, res) => res.json({ ok: true }));
 
     this.app.use('/login', loginRouter);
+
+    this.app.use('/teams', teamsRouter);
 
     this.app.use(errorMidleware);
   }

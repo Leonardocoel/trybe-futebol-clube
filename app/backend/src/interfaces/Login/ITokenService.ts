@@ -1,4 +1,4 @@
-import { UserDTO } from './IUser';
+import { UserDTO } from '../IUser';
 
 export interface ITokenService {
   sign(user: UserDTO): string;
