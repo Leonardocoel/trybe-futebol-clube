@@ -1,4 +1,4 @@
-import { ILogin } from "../../interfaces/ILogin"
+import { ILogin } from "../../interfaces/Login/ILogin"
 import {  IUserWithPassword, UserDTO } from "../../interfaces/IUser"
 
 export const validUser: IUserWithPassword = {

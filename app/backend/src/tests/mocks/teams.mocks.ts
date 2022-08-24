@@ -20,3 +20,8 @@ export const allTeams = [
     teamName: "Cruzeiro",
   },
 ];
+
+export const team = {
+  id: 2,
+    teamName: "Bahia",
+}
