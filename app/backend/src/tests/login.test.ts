@@ -12,7 +12,7 @@ import {
   validLogin,
   validUser,
   validUserDTO,
-} from "./mocks/mocks";
+} from "./mocks/users.mocks";
 
 import { Response } from "superagent";
 
@@ -21,8 +21,6 @@ chai.use(chaiHttp);
 import { expect } from "chai";
 
 describe("Login", () => {
-  let response: Response;
-
   describe("Correct credentials", () => {
     afterEach(() => Sinon.restore());
 
@@ -78,7 +76,10 @@ describe("Login", () => {
     it("after validating the token returns the user role ", async () => {
       Sinon.stub(jwtService, "verify").returns(validUserDTO);
 
-      const response = await chai.request(app).get("/login/validate").set("Authorization", token);
+      const response = await chai
+        .request(app)
+        .get("/login/validate")
+        .set("Authorization", token);
 
       expect(response.status).to.be.equal(200);
       expect(response.body.role).to.be.equal("user");
