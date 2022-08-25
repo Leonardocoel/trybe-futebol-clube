@@ -19,7 +19,7 @@ describe("Teams", () => {
      
     afterEach(() =>  Sinon.restore());
 
-    it("All teams", async () => {
+    it("Request all teams, return status 200 and a array of teams.", async () => {
       Sinon.stub(TeamsModel, "findAll").resolves(allTeams as TeamsModel[])
       
       const response = await chai.request(app).get('/teams') ;
@@ -29,7 +29,7 @@ describe("Teams", () => {
 
     });
 
-    it('Team by id', async () => {
+    it('Request team by id, return status 200 and the correct team.', async () => {
       Sinon.stub(TeamsModel, "findOne").resolves(allTeams[1] as TeamsModel)
 
       const response = await chai.request(app).get('/teams/:id').send({id: 2});
