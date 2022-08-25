@@ -38,7 +38,4 @@ describe("Teams", () => {
       expect(response.body).to.be.eql(team)
     })
  })
-
- 
-
 })
