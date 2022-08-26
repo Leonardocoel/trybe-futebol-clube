@@ -32,7 +32,7 @@ describe("Teams", () => {
     it('Request team by id, return status 200 and the correct team.', async () => {
       Sinon.stub(TeamsModel, "findOne").resolves(allTeams[1] as TeamsModel)
 
-      const response = await chai.request(app).get('/teams/:id').send({id: 2});
+      const response = await chai.request(app).get('/teams/2')
 
       expect(response.status).to.be.equal(200);
       expect(response.body).to.be.eql(team)

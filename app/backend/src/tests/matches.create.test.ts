@@ -18,7 +18,7 @@ import { token, validUserDTO } from "./mocks/users.mocks";
 
 describe("Matches", () => {
   describe("Put", () => {
-    before(() => Sinon.stub(JwtService, "verify").returns(validUserDTO));
+    beforeEach(() => Sinon.stub(JwtService, "verify").returns(validUserDTO));
     afterEach(() => Sinon.restore());
 
     it("When a match is sent correctly, it returns status 201 and the complete data.", async () => {
@@ -36,7 +36,16 @@ describe("Matches", () => {
       expect(response.body).to.be.eql(newMatchReturn);
     });
 
-    // it("", async () => {
-    // })
+    it("When set match as finished, it returns status 200 and the message Finished.", async () => {
+      const stub = Sinon.stub(MatchesModel, "update");
+
+      const response = await chai
+        .request(app)
+        .patch("/matches/48/finish")
+        .set("Authorization", token)
+      
+      expect(response.status).to.be.equal(200);
+      expect(response.body.message).to.be.equal("Finished");
+    });
   });
 });
