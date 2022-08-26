@@ -10,4 +10,12 @@ export default class MatchesController {
 
     res.status(StatusCodes.OK).json(matches);
   }
+
+  static async createMatch(req: Request, res: Response): Promise<void> {
+    const newMatch = req.body;
+
+    const match = await MatchesService.createMatch(newMatch);
+
+    res.status(StatusCodes.CREATED).json(match);
+  }
 }

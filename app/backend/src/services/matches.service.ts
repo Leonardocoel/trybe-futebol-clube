@@ -1,3 +1,4 @@
+import { IMatch } from '../interfaces/Matches/IMatches';
 import Matches from '../database/models/matches.model';
 
 export default class MatchesService {
@@ -12,5 +13,11 @@ export default class MatchesService {
     });
 
     return matches;
+  }
+
+  static async createMatch(newMatch: IMatch) {
+    const match = await Matches.create(newMatch);
+
+    return match;
   }
 }

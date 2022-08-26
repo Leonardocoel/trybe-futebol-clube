@@ -36,7 +36,7 @@ export default class LoginService implements ILoginService {
 
   validateToken(token: string): string {
     if (!token) {
-      const error = new Error('Token not found');
+      const error = new Error('Token must be a valid token');
       error.name = 'UNAUTHORIZED';
       throw error;
     }

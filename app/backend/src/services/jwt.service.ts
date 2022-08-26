@@ -15,9 +15,15 @@ export default class JwtService {
   }
 
   static verify(token:string) {
-    const payload = verify(token, process.env.JWT_SECRET as string);
-    const { data } = payload as JwtPayload;
+    try {
+      const payload = verify(token, process.env.JWT_SECRET as string);
+      const { data } = payload as JwtPayload;
 
-    return data as UserDTO;
+      return data as UserDTO;
+    } catch (_err) {
+      const error = new Error('Token must be a valid token');
+      error.name = 'UNAUTHORIZED';
+      throw error;
+    }
   }
 }
