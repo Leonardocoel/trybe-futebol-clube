@@ -17,7 +17,6 @@ import {
   allMatchesInProgress,
   argMock,
 } from "./mocks/matches.mocks";
-import { where } from "sequelize/types";
 
 describe("Matches", () => {
   describe("Get", () => {

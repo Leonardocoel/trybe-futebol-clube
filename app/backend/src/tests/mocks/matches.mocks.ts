@@ -93,10 +93,24 @@ export const allMatchesFinished = [
 
 export const argMock = {
   include: [
-    { association: 'teamHome', attributes: { exclude: ['id'] } },
-    { association: 'teamAway', attributes: { exclude: ['id'] } },
+    { association: "teamHome", attributes: { exclude: ["id"] } },
+    { association: "teamAway", attributes: { exclude: ["id"] } },
   ],
   where: {},
 };
 
+export const newMatch = {
+  homeTeam: 16,
+  homeTeamGoals: 2,
+  awayTeam: 8,
+  awayTeamGoals: 2,
+};
 
+export const newMatchReturn = {
+  id: 1,
+  homeTeam: 16,
+  homeTeamGoals: 2,
+  awayTeam: 8,
+  awayTeamGoals: 2,
+  inProgress: true,
+};
