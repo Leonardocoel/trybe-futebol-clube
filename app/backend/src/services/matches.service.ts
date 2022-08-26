@@ -20,4 +20,8 @@ export default class MatchesService {
 
     return match;
   }
+
+  static async finishMatch(id: string) {
+    await Matches.update({ inProgress: false }, { where: { id } });
+  }
 }
