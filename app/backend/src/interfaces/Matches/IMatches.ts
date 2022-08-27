@@ -1,8 +1,12 @@
-export interface IMatch {
-  homeTeam: number;
-  awayTeam: number;
+export interface IScore {
   homeTeamGoals: number;
   awayTeamGoals: number;
+}
+
+export interface IMatch extends IScore {
+  homeTeam: number;
+  awayTeam: number;
+
 }
 
 export interface IMatchReturn extends IMatch {

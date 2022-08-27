@@ -26,4 +26,12 @@ export default class MatchesController {
 
     res.status(StatusCodes.OK).json({ message: 'Finished' });
   }
+
+  static async updateMatch(req: Request, res: Response): Promise<void> {
+    const { id } = req.params;
+
+    await MatchesService.updateScore(id, req.body);
+
+    res.status(StatusCodes.OK).json({ message: 'Updated' });
+  }
 }

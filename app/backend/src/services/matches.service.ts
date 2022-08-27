@@ -1,4 +1,5 @@
-import { IMatch } from '../interfaces/Matches/IMatches';
+import validateTeams from '../helpers/ValidateNewMatches';
+import { IMatch, IScore } from '../interfaces/Matches/IMatches';
 import Matches from '../database/models/matches.model';
 
 export default class MatchesService {
@@ -16,6 +17,8 @@ export default class MatchesService {
   }
 
   static async createMatch(newMatch: IMatch) {
+    await validateTeams(newMatch);
+
     const match = await Matches.create(newMatch);
 
     return match;
@@ -23,5 +26,9 @@ export default class MatchesService {
 
   static async finishMatch(id: string) {
     await Matches.update({ inProgress: false }, { where: { id } });
+  }
+
+  static async updateScore(id: string, score: IScore) {
+    await Matches.update(score, { where: { id } });
   }
 }
