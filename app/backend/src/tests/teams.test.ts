@@ -15,7 +15,7 @@ import { allTeams, team } from "./mocks/teams.mocks";
 
 describe("Teams", () => {
 
- describe("Get", () => {
+ describe("Read", () => {
      
     afterEach(() =>  Sinon.restore());
 
@@ -30,7 +30,7 @@ describe("Teams", () => {
     });
 
     it('Request team by id, return status 200 and the correct team.', async () => {
-      Sinon.stub(TeamsModel, "findOne").resolves(allTeams[1] as TeamsModel)
+      Sinon.stub(TeamsModel, "findByPk").resolves(allTeams[1] as TeamsModel)
 
       const response = await chai.request(app).get('/teams/2')
 

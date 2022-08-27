@@ -19,7 +19,7 @@ import {
 } from "./mocks/matches.mocks";
 
 describe("Matches", () => {
-  describe("Get", () => {
+  describe("Read", () => {
     afterEach(() => Sinon.restore());
 
     it("Request all matches, return status 200 and all matches.", async () => {

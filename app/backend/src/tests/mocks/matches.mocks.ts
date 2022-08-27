@@ -114,3 +114,22 @@ export const newMatchReturn = {
   awayTeamGoals: 2,
   inProgress: true,
 };
+
+export const newMatchSameTeams = {
+  homeTeam: 16,
+  homeTeamGoals: 2,
+  awayTeam: 16,
+  awayTeamGoals: 2,
+}
+
+export const newMatchWrongTeams = {
+  homeTeam: 16,
+  homeTeamGoals: 2,
+  awayTeam: 998,
+  awayTeamGoals: 2,
+}
+
+export const newScore = {
+  homeTeamGoals: 4,
+  awayTeamGoals: 5,
+}
