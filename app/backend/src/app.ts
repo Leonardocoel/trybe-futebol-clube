@@ -2,7 +2,7 @@ import * as express from 'express';
 import 'express-async-errors';
 import * as cors from 'cors';
 
-import { loginRouter, matchesRouter, teamsRouter } from './routers';
+import { leaderboardRouter, loginRouter, matchesRouter, teamsRouter } from './routers';
 
 import errorMidleware from './middlewares/error.middleware';
 
@@ -22,6 +22,8 @@ class App {
     this.app.use('/matches', matchesRouter);
 
     this.app.use('/teams', teamsRouter);
+
+    this.app.use('/leaderboard', leaderboardRouter);
 
     this.app.use(errorMidleware);
   }
